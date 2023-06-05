@@ -4,14 +4,13 @@ const createOrder = async (req, res) => {
     try {
 
         // eslint-disable-next-line camelcase
-        const {restaurant_name, items, total_price, discount_coupon} = req.body;
+        const {restaurant_name, items, total_price} = req.body;
 
 
         const order = new Order({
             restaurant_name,
             items,
-            total_price,
-            discount_coupon
+            total_price
         });
 
         await order.save();

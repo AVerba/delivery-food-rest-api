@@ -1,11 +1,12 @@
 const express = require("express");
 const {ctrlWrapper} = require(`../../helpers`);
-const {auth, isValidId} = require(`../../middlewares`);
+const {auth, validation, isValidId} = require(`../../middlewares`);
 const ctrl = require(`../../controllers/orders`);
+const {schemas} = require("../../models/order");
 
 const router = express.Router();
 // Create a new order
-router.post('/', auth, ctrlWrapper(ctrl.createOrder));
+router.post('/', auth, validation(schemas.order), ctrlWrapper(ctrl.createOrder));
 
 // Get all orders
 router.get('/', auth, ctrlWrapper(ctrl.getAllOrders));

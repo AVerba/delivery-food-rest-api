@@ -26,8 +26,13 @@ const orderSchema = new Schema({
         required: true
     }
 });
-
+const schemas = {
+    order: orderSchema,
+};
 
 const Order = model('Order', orderSchema);
 
-module.exports = Order;
+module.exports = {
+    Order,
+    schemas,
+};

@@ -15,7 +15,12 @@ const couponSchema = new Schema({
         required: true
     }
 });
-
+const schemas = {
+    coupon: couponSchema,
+};
 const Coupon = model('Coupon', couponSchema);
 
-module.exports = Coupon;
+module.exports = {
+    Coupon,
+    schemas,
+};
