@@ -1,21 +1,13 @@
-const Order = require('../../models/order');
+const {Order} = require('../../models/order');
 
 const createOrder = async (req, res) => {
+    const {_id: owner} = req.user;
+
     try {
+        const orderData = { ...req.body, owner };
+        const order = await Order.create(orderData);
 
-        // eslint-disable-next-line camelcase
-        const {restaurant_name, items, total_price} = req.body;
-
-
-        const order = new Order({
-            restaurant_name,
-            items,
-            total_price
-        });
-
-        await order.save();
-
-        res.status(201).json({order});
+        res.status(201).json(order);
     } catch (error) {
         console.error(error);
         res.status(500).json({error: 'Internal server error'});

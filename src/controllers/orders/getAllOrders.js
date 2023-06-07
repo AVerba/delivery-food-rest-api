@@ -1,7 +1,9 @@
-const Order = require('../../models/order');
+const {Order} = require('../../models/order');
 const getAllOrders = async (req, res) => {
+    const {_id: owner} = req.user;
     try {
-        const orders = await Order.find();
+        const orders = await Order.find({owner}, "-createdAt -updatedAt");
+        // const orders = await Order.find();
         res.json({orders});
     } catch (error) {
         console.error(error);
