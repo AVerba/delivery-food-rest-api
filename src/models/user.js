@@ -1,9 +1,7 @@
 const {Schema, model} = require("mongoose");
+const{emailRegexp,passwordRegexp} =require("../const/RegExp")
 const Joi = require("joi");
 
-const emailRegexp =
-    /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+@([a-zA-Z0-9]+([a-zA-Z0-9.])\.)+[a-z]{2,4}$/;
-const passwordRegexp = /^(?=.*\d)(?=.*[a-z])(?!.*\s).*$/;
 
 const userSchema = new Schema(
     {
