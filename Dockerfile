@@ -6,6 +6,6 @@ COPY . .
 
 RUN npm install
 
-EXPOSE 4000
+EXPOSE 3001
 
-CMD [ "node", "index" ]
+CMD [ "node", "server" ]
