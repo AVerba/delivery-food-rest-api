@@ -9,7 +9,7 @@ const {schemas} = require("../../models/coupon");
 const router = express.Router();
 
 // Create a new coupon
-router.post('/', auth, validation(schemas.coupon), ctrlWrapper(ctrl.createCoupon));
+router.post('/', auth, validation(schemas), ctrlWrapper(ctrl.createCoupon));
 
 // Get all coupons
 router.get('/', auth, ctrlWrapper(ctrl.getAllCoupons));
